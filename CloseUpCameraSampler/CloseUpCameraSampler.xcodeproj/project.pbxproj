@@ -101,11 +101,10 @@
 			children = (
 				66EBCA5E2BDC6926001A05EC /* AppDelegate.swift */,
 				66EBCA602BDC6926001A05EC /* SceneDelegate.swift */,
-				66EBCA622BDC6926001A05EC /* ViewController.swift */,
-				66EBCA642BDC6926001A05EC /* Main.storyboard */,
-				66EBCA672BDC6935001A05EC /* Assets.xcassets */,
 				66EBCA692BDC6935001A05EC /* LaunchScreen.storyboard */,
-				66EBCA6C2BDC6935001A05EC /* Info.plist */,
+				66EBCA902BDC69A5001A05EC /* ViewController */,
+				66EBCA8E2BDC697B001A05EC /* Common */,
+				66EBCA8F2BDC698E001A05EC /* Resources */,
 			);
 			path = CloseUpCameraSampler;
 			sourceTree = "<group>";
@@ -125,6 +124,31 @@
 				66EBCA812BDC6935001A05EC /* CloseUpCameraSamplerUITestsLaunchTests.swift */,
 			);
 			path = CloseUpCameraSamplerUITests;
+			sourceTree = "<group>";
+		};
+		66EBCA8E2BDC697B001A05EC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		66EBCA8F2BDC698E001A05EC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				66EBCA672BDC6935001A05EC /* Assets.xcassets */,
+				66EBCA6C2BDC6935001A05EC /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		66EBCA902BDC69A5001A05EC /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				66EBCA622BDC6926001A05EC /* ViewController.swift */,
+				66EBCA642BDC6926001A05EC /* Main.storyboard */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
