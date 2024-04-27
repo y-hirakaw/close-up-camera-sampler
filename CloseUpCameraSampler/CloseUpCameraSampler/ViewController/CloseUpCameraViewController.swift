@@ -2,6 +2,9 @@ import UIKit
 import AVFoundation
 
 class CloseUpCameraViewController: CameraViewController {
+
+    private let initialCloseUpTargetSize = Float(20)
+
     private var rectOfInterestWidth = Double()
     private var rectOfInterestHeight = Double()
     // MARK: Zoom Management
@@ -15,6 +18,9 @@ class CloseUpCameraViewController: CameraViewController {
 
     override func setUpOtherSettings() {
         setRecommendedZoomFactor()
+        self.zoomSlider.maximumValue = Float(min(self.captureDeviceInput.device.activeFormat.videoMaxZoomFactor, CGFloat(8.0)))
+        self.zoomSlider.value = Float(self.captureDeviceInput.device.videoZoomFactor)
+        self.zoomSlider.isEnabled = true
     }
 
     @IBAction private func zoomCamera(with zoomSlider: UISlider) {
@@ -39,7 +45,7 @@ class CloseUpCameraViewController: CameraViewController {
 
         let deviceFieldOfView = self.captureDeviceInput.device.activeFormat.videoFieldOfView
         let minimumSubjectDistanceForCode = minimumSubjectDistanceForCode(fieldOfView: deviceFieldOfView,
-                                                                          minimumCodeSize: 20,
+                                                                          minimumCodeSize: self.initialCloseUpTargetSize,
                                                                           previewFillPercentage: Float(self.rectOfInterestWidth))
         if minimumSubjectDistanceForCode < deviceMinimumFocusDistance {
             let zoomFactor = deviceMinimumFocusDistance / minimumSubjectDistanceForCode

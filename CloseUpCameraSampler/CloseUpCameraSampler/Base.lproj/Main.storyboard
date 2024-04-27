@@ -108,7 +108,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RSx-OG-Aqp">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RSx-OG-Aqp">
                                 <rect key="frame" x="14" y="708" width="365" height="31"/>
                                 <connections>
                                     <action selector="zoomCameraWith:" destination="Eb5-7s-l25" eventType="valueChanged" id="bhB-EH-94i"/>
