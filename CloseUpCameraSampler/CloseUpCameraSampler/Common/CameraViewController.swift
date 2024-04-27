@@ -133,18 +133,6 @@ class CameraViewController: UIViewController {
             if session.canAddInput(deviceInput) {
                 session.addInput(deviceInput)
                 self.captureDeviceInput = deviceInput
-
-                DispatchQueue.main.async {
-                    // TODO: 'AVCaptureVideoOrientation' was deprecated in iOS 17.0: Use AVCaptureDeviceRotationCoordinator instead
-                    var initialVideoOrientation: AVCaptureVideoOrientation = .portrait
-                    if self.windowOrientation != .unknown {
-                        if let videoOrientation = AVCaptureVideoOrientation(interfaceOrientation: self.windowOrientation) {
-                            initialVideoOrientation = videoOrientation
-                        }
-                    }
-
-                    self.previewView.previewLayer.connection!.videoOrientation = initialVideoOrientation
-                }
             } else {
                 print("Could not add video device input to the session")
                 setupResult = .configurationFailed
@@ -192,13 +180,6 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         }
 
         saveImage(imageData)
-
-        // 画像データを加工/圧縮する場合
-//        guard let image = UIImage(data: imageData) else {
-//            return
-//        }
-//        let compressedImageData = image.jpegData(compressionQuality: 0.5)
-//        saveImage(compressedImageData)
     }
 
     /// カメラロールに保存
@@ -214,29 +195,6 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
             showAlert(error.localizedDescription)
         } else {
             showAlert("Image saved to Camera Roll")
-        }
-    }
-}
-
-// TODO: 'AVCaptureVideoOrientation' was deprecated in iOS 17.0: Use AVCaptureDeviceRotationCoordinator instead
-extension AVCaptureVideoOrientation {
-    init?(deviceOrientation: UIDeviceOrientation) {
-        switch deviceOrientation {
-        case .portrait: self = .portrait
-        case .portraitUpsideDown: self = .portraitUpsideDown
-        case .landscapeLeft: self = .landscapeRight
-        case .landscapeRight: self = .landscapeLeft
-        default: return nil
-        }
-    }
-
-    init?(interfaceOrientation: UIInterfaceOrientation) {
-        switch interfaceOrientation {
-        case .portrait: self = .portrait
-        case .portraitUpsideDown: self = .portraitUpsideDown
-        case .landscapeLeft: self = .landscapeLeft
-        case .landscapeRight: self = .landscapeRight
-        default: return nil
         }
     }
 }
