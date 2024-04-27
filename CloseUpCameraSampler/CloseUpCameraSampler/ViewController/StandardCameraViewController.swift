@@ -3,6 +3,4 @@ import AVFoundation
 
 class StandardCameraViewController: CameraViewController {
 
-    
-
 }
