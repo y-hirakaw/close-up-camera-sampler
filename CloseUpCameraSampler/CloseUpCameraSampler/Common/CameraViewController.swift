@@ -59,7 +59,7 @@ class CameraViewController: UIViewController {
                 DispatchQueue.main.async {
                     let changePrivacySetting = "Doesn't have permission to use the camera, please change privacy settings"
                     let message = NSLocalizedString(changePrivacySetting, comment: "Alert message when the user has denied access to the camera")
-                    let    alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+                    let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"), style: .cancel, handler: nil))
                     alertController.addAction(UIAlertAction(title: NSLocalizedString("Settings",
                                                                                      comment: "Alert button to open Settings"),
@@ -99,7 +99,6 @@ class CameraViewController: UIViewController {
         }
 
         session.beginConfiguration()
-
 
         if !setUpCaptureDeviceInput() {
             session.commitConfiguration()
