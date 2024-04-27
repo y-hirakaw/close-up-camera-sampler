@@ -3,7 +3,6 @@ import AVFoundation
 
 class CameraViewController: UIViewController {
 
-    // MARK: Session Management
     private enum SessionSetupResult {
         case success
         case notAuthorized
@@ -57,20 +56,18 @@ class CameraViewController: UIViewController {
                 self.isSessionRunning = self.session.isRunning
             case .notAuthorized:
                 DispatchQueue.main.async {
-                    let changePrivacySetting = "Doesn't have permission to use the camera, please change privacy settings"
-                    let message = NSLocalizedString(changePrivacySetting, comment: "Alert message when the user has denied access to the camera")
+                    let changePrivacySetting = "カメラの使用許可がありません。プライバシー設定を変更してください。"
+                    let message = NSLocalizedString(changePrivacySetting, comment: "ユーザがカメラへのアクセスを拒否した場合の警告メッセージ")
                     let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"), style: .cancel, handler: nil))
-                    alertController.addAction(UIAlertAction(title: NSLocalizedString("Settings",
-                                                                                     comment: "Alert button to open Settings"),
-                                                            style: .`default`, handler: { _ in
+                    alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    alertController.addAction(UIAlertAction(title: "設定", style: .`default`, handler: { _ in
                         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
                     }))
                     self.present(alertController, animated: true, completion: nil)
                 }
             case .configurationFailed:
                 DispatchQueue.main.async {
-                    self.showAlert("Unable to capture media")
+                    self.showAlert("メディアをキャプチャできません")
                 }
             }
         }
@@ -92,7 +89,6 @@ class CameraViewController: UIViewController {
         capturePhotoOutput.capturePhoto(with: settings, delegate: self)
     }
 
-    // MARK: Session Configuration
     private func configureSession() {
         if self.setupResult != .success {
             return
@@ -119,7 +115,7 @@ class CameraViewController: UIViewController {
             let captureDevice: AVCaptureDevice? = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back)
 
             guard let captureDevice = captureDevice else {
-                print("Could not get camera device")
+                print("カメラデバイスを取得できませんでした")
                 setupResult = .configurationFailed
                 return false
             }
@@ -134,12 +130,12 @@ class CameraViewController: UIViewController {
                 session.addInput(deviceInput)
                 self.captureDeviceInput = deviceInput
             } else {
-                print("Could not add video device input to the session")
+                print("カメラ入力をセッションに追加できませんでした")
                 setupResult = .configurationFailed
                 return false
             }
         } catch {
-            print("Could not create video device input: \(error)")
+            print("デバイス入力を作成できませんでした: \(error)")
             setupResult = .configurationFailed
             return false
         }
@@ -150,7 +146,7 @@ class CameraViewController: UIViewController {
         if session.canAddOutput(capturePhotoOutput) {
             session.addOutput(capturePhotoOutput)
         } else {
-            print("Could not add photo output to the session")
+            print("出力セッションに追加できませんでした")
             setupResult = .configurationFailed
             session.commitConfiguration()
             return false
@@ -171,7 +167,7 @@ class CameraViewController: UIViewController {
 extension CameraViewController: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let error = error {
-            print("Capture failed: \(error.localizedDescription)")
+            print("キャプチャ失敗: \(error.localizedDescription)")
             return
         }
 
@@ -194,7 +190,7 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         if let error = error {
             showAlert(error.localizedDescription)
         } else {
-            showAlert("Image saved to Camera Roll")
+            showAlert("カメラロールに保存された画像")
         }
     }
 }

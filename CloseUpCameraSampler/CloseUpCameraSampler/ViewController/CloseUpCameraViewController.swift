@@ -8,7 +8,6 @@ class CloseUpCameraViewController: CameraViewController {
     private var rectOfInterestWidth = Double()
     private var rectOfInterestHeight = Double()
 
-    // MARK: Zoom Management
     @IBOutlet private var zoomSlider: UISlider!
 
     override func setUpCapturePhotoOutput() -> Bool {
@@ -33,7 +32,7 @@ class CloseUpCameraViewController: CameraViewController {
             captureDeviceInput.device.videoZoomFactor = CGFloat(zoomSlider.value)
             captureDeviceInput.device.unlockForConfiguration()
         } catch {
-            print("Could not lock for configuration: \(error)")
+            print("設定のロック失敗: \(error)")
         }
     }
 
@@ -58,7 +57,7 @@ class CloseUpCameraViewController: CameraViewController {
                 captureDeviceInput.device.videoZoomFactor = CGFloat(zoomFactor)
                 captureDeviceInput.device.unlockForConfiguration()
             } catch {
-                print("Could not lock for configuration: \(error)")
+                print("設定のロック失敗: \(error)")
             }
         }
     }
