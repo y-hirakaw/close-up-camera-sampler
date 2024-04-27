@@ -17,6 +17,7 @@ class CloseUpCameraViewController: CameraViewController {
     }
 
     override func setUpOtherSettings() {
+        super.setUpOtherSettings()
         setRecommendedZoomFactor()
         self.zoomSlider.maximumValue = Float(min(self.captureDeviceInput.device.activeFormat.videoMaxZoomFactor, CGFloat(8.0)))
         self.zoomSlider.value = Float(self.captureDeviceInput.device.videoZoomFactor)

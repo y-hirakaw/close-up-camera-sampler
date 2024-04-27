@@ -101,12 +101,12 @@ class CameraViewController: UIViewController {
         session.beginConfiguration()
 
 
-        if setUpCaptureDeviceInput() {
+        if !setUpCaptureDeviceInput() {
             session.commitConfiguration()
             return
         }
 
-        if setUpCapturePhotoOutput() {
+        if !setUpCapturePhotoOutput() {
             session.commitConfiguration()
             return
         }
@@ -126,6 +126,10 @@ class CameraViewController: UIViewController {
             }
 
             let deviceInput = try AVCaptureDeviceInput(device: captureDevice)
+
+            if session.canSetSessionPreset(.photo) {
+                session.sessionPreset = .photo
+            }
 
             if session.canAddInput(deviceInput) {
                 session.addInput(deviceInput)
