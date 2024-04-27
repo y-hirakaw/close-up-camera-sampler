@@ -15,7 +15,7 @@ class CameraViewController: UIViewController {
     var captureDeviceInput: AVCaptureDeviceInput!
     private let capturePhotoOutput = AVCapturePhotoOutput()
 
-    @IBOutlet private var previewView: CameraPreviewView!
+    @IBOutlet var previewView: CameraPreviewView!
 
     var windowOrientation: UIInterfaceOrientation {
         return view.window?.windowScene?.interfaceOrientation ?? .unknown
