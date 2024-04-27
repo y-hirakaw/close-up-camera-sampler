@@ -3,20 +3,20 @@ import AVFoundation
 
 class CameraPreviewView: UIView {
 
-    var previewLayer: AVCaptureVideoPreviewLayer? {
+    var previewLayer: AVCaptureVideoPreviewLayer {
         guard let layer = layer as? AVCaptureVideoPreviewLayer else {
-            return nil
+            fatalError("Expected `AVCaptureVideoPreviewLayer` type for layer. Check PreviewView.layerClass implementation.")
         }
         return layer
     }
 
     var session: AVCaptureSession? {
         get {
-            return previewLayer?.session
+            return previewLayer.session
         }
         set {
             if let newSession = newValue {
-                previewLayer?.session = newSession
+                previewLayer.session = newSession
             }
         }
     }
@@ -27,6 +27,6 @@ class CameraPreviewView: UIView {
 
     override func layoutSublayers(of: CALayer) {
         super.layoutSublayers(of: layer)
-        previewLayer?.frame = bounds
+        previewLayer.frame = bounds
     }
 }

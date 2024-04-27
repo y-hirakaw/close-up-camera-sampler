@@ -1,10 +1,3 @@
-//
-//  CloseUpCameraSamplerUITests.swift
-//  CloseUpCameraSamplerUITests
-//
-//  Created by 平川裕多 on 2024/04/27.
-//
-
 import XCTest
 
 final class CloseUpCameraSamplerUITests: XCTestCase {

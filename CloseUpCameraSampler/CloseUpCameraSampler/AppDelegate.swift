@@ -1,16 +1,7 @@
-//
-//  AppDelegate.swift
-//  CloseUpCameraSampler
-//
-//  Created by 平川裕多 on 2024/04/27.
-//
-
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

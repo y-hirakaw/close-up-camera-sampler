@@ -58,10 +58,39 @@
                     <view key="view" contentMode="scaleToFill" id="mhP-F5-NY2">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G0i-3h-EPu" customClass="CameraPreviewView" customModule="CloseUpCameraSampler" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7W3-Gn-QVw">
+                                <rect key="frame" x="168.66666666666666" y="754" width="56" height="56"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="hyr-aW-jcT"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="撮影"/>
+                                <connections>
+                                    <action selector="captureButtonTapped:" destination="Iaf-9n-faY" eventType="touchUpInside" id="eVo-lI-ryK"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vJN-v2-oc2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="G0i-3h-EPu" firstAttribute="top" secondItem="vJN-v2-oc2" secondAttribute="top" id="494-eM-jII"/>
+                            <constraint firstItem="vJN-v2-oc2" firstAttribute="bottom" secondItem="G0i-3h-EPu" secondAttribute="bottom" id="LEl-BN-kuB"/>
+                            <constraint firstItem="vJN-v2-oc2" firstAttribute="bottom" secondItem="7W3-Gn-QVw" secondAttribute="bottom" constant="32" id="Rti-Wg-kxa"/>
+                            <constraint firstItem="vJN-v2-oc2" firstAttribute="trailing" secondItem="G0i-3h-EPu" secondAttribute="trailing" id="b4a-o1-uCc"/>
+                            <constraint firstItem="G0i-3h-EPu" firstAttribute="leading" secondItem="vJN-v2-oc2" secondAttribute="leading" id="jgN-tG-dQh"/>
+                            <constraint firstItem="7W3-Gn-QVw" firstAttribute="centerX" secondItem="mhP-F5-NY2" secondAttribute="centerX" id="tNP-U8-eTj"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MA9-FP-zJH"/>
+                    <connections>
+                        <outlet property="previewView" destination="G0i-3h-EPu" id="YXa-2f-V8E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CVw-aM-j8s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -74,10 +103,49 @@
                     <view key="view" contentMode="scaleToFill" id="hXu-D9-iCG">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1i-EK-huJ" customClass="CameraPreviewView" customModule="CloseUpCameraSampler" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RSx-OG-Aqp">
+                                <rect key="frame" x="14" y="708" width="365" height="31"/>
+                                <connections>
+                                    <action selector="zoomCameraWith:" destination="Eb5-7s-l25" eventType="valueChanged" id="bhB-EH-94i"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imH-xF-cHy">
+                                <rect key="frame" x="168.66666666666666" y="754" width="56" height="56"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="KIv-nY-MMU"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="撮影"/>
+                                <connections>
+                                    <action selector="captureButtonTapped:" destination="Eb5-7s-l25" eventType="touchUpInside" id="mKo-px-UCI"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="gVw-Jb-l1N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="u1i-EK-huJ" firstAttribute="leading" secondItem="gVw-Jb-l1N" secondAttribute="leading" id="8VL-7b-ol2"/>
+                            <constraint firstItem="gVw-Jb-l1N" firstAttribute="trailing" secondItem="RSx-OG-Aqp" secondAttribute="trailing" constant="16" id="9ad-87-TUj"/>
+                            <constraint firstItem="u1i-EK-huJ" firstAttribute="bottom" secondItem="gVw-Jb-l1N" secondAttribute="bottom" id="ER2-UW-Evs"/>
+                            <constraint firstItem="gVw-Jb-l1N" firstAttribute="bottom" secondItem="imH-xF-cHy" secondAttribute="bottom" constant="32" id="Hdn-nq-MXM"/>
+                            <constraint firstItem="u1i-EK-huJ" firstAttribute="trailing" secondItem="gVw-Jb-l1N" secondAttribute="trailing" id="KWu-Wg-BV4"/>
+                            <constraint firstItem="RSx-OG-Aqp" firstAttribute="leading" secondItem="gVw-Jb-l1N" secondAttribute="leading" constant="16" id="MVd-W6-J6b"/>
+                            <constraint firstItem="u1i-EK-huJ" firstAttribute="top" secondItem="gVw-Jb-l1N" secondAttribute="top" id="SMm-dV-SHe"/>
+                            <constraint firstItem="imH-xF-cHy" firstAttribute="top" secondItem="RSx-OG-Aqp" secondAttribute="bottom" constant="16" id="TpZ-Pe-GLL"/>
+                            <constraint firstItem="imH-xF-cHy" firstAttribute="centerX" secondItem="hXu-D9-iCG" secondAttribute="centerX" id="q2f-a8-4Rr"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dXh-L9-35D"/>
+                    <connections>
+                        <outlet property="previewView" destination="u1i-EK-huJ" id="iPi-r6-0ug"/>
+                        <outlet property="zoomSlider" destination="RSx-OG-Aqp" id="hoQ-Kq-5fV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0aW-98-Ob3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
