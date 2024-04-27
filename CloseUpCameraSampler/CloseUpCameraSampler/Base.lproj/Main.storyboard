@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1jo-Mz-SaD">
-                                <rect key="frame" x="0.0" y="59.000000000000007" width="393" height="76.666666666666686"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="119"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biy-1S-eWl">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="34.333333333333336"/>
@@ -33,6 +33,14 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Close Up Camera"/>
                                         <connections>
                                             <segue destination="Eb5-7s-l25" kind="show" id="xff-7Y-eSB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gol-ED-Xei">
+                                        <rect key="frame" x="0.0" y="84.666666666666657" width="393" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Switch Camera"/>
+                                        <connections>
+                                            <segue destination="uqW-xQ-mt7" kind="show" id="seT-pU-eua"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -150,6 +158,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0aW-98-Ob3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1105" y="445"/>
+        </scene>
+        <!--Switch Camera View Controller-->
+        <scene sceneID="3Lc-dl-oE3">
+            <objects>
+                <viewController storyboardIdentifier="SwitchCameraViewController" id="uqW-xQ-mt7" customClass="SwitchCameraViewController" customModule="CloseUpCameraSampler" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ySe-di-trh">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hFR-Ai-YOS" customClass="CameraPreviewView" customModule="CloseUpCameraSampler" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Rq-if-06X">
+                                <rect key="frame" x="168.66666666666666" y="754" width="56" height="56"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="Tsj-IU-6Aw"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="撮影"/>
+                                <connections>
+                                    <action selector="captureButtonTapped:" destination="uqW-xQ-mt7" eventType="touchUpInside" id="E0h-ZM-vhi"/>
+                                    <action selector="captureButtonTapped:" destination="Eb5-7s-l25" eventType="touchUpInside" id="phZ-4Q-Wkn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="YvN-Wj-BGU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1Rq-if-06X" firstAttribute="centerX" secondItem="ySe-di-trh" secondAttribute="centerX" id="1Hb-4x-0QL"/>
+                            <constraint firstItem="YvN-Wj-BGU" firstAttribute="bottom" secondItem="1Rq-if-06X" secondAttribute="bottom" constant="32" id="2Cd-ec-LA9"/>
+                            <constraint firstItem="hFR-Ai-YOS" firstAttribute="top" secondItem="YvN-Wj-BGU" secondAttribute="top" id="2KH-7u-bPh"/>
+                            <constraint firstItem="hFR-Ai-YOS" firstAttribute="trailing" secondItem="YvN-Wj-BGU" secondAttribute="trailing" id="4nm-3u-o3O"/>
+                            <constraint firstItem="hFR-Ai-YOS" firstAttribute="leading" secondItem="YvN-Wj-BGU" secondAttribute="leading" id="PrX-Nx-nQh"/>
+                            <constraint firstItem="hFR-Ai-YOS" firstAttribute="bottom" secondItem="YvN-Wj-BGU" secondAttribute="bottom" id="mx7-lx-gLd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="5cr-tq-g1D"/>
+                    <connections>
+                        <outlet property="previewView" destination="hFR-Ai-YOS" id="caH-qJ-e33"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IOH-lS-IST" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1109" y="1092"/>
         </scene>
     </scenes>
     <resources>
